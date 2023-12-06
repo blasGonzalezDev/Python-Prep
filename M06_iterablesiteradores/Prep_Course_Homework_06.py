@@ -7,7 +7,12 @@
 
 # In[1]:
 
-
+lista_negativos = list()
+numero = -15
+while numero<=-1:
+    lista_negativos.append(numero)
+    numero +=1
+print(lista_negativos)
 
 
 
@@ -15,7 +20,11 @@
 
 # In[3]:
 
-
+i=0
+while i<len(lista_negativos):
+    if lista_negativos[i]%2==0:
+        print(lista_negativos[i])
+    i+=1
 
 
 
@@ -23,7 +32,9 @@
 
 # In[4]:
 
-
+for negativo in lista_negativos:
+    if negativo%2==0:
+        print(negativo)
 
 
 
@@ -31,28 +42,33 @@
 
 # In[7]:
 
-
+for negativo in lista_negativos[:3]:
+    print(negativo)
 
 
 # 5) Utilizar la función **enumerate** para obtener dentro del iterable, tambien el índice al que corresponde el elemento
 
 # In[9]:
 
-
+for posicion, numero in enumerate(lista_negativos):
+    print(posicion, numero)
 
 
 # 6) Dada la siguiente lista de números enteros entre 1 y 20, crear un ciclo donde se completen los valores faltantes: lista = [1,2,5,7,8,10,13,14,15,17,20]
 
 # In[10]:
 
-
+lista = [1,2,5,7,8,10,13,14,15,17,20]
+num = 1
+while num<=20:
+    if not(num in lista):
+        lista.insert(num-1,num)
+    num +=1
+print(lista)
 
 
 
 # In[11]:
-
-
-n = 1
 
 
 
@@ -64,7 +80,18 @@ n = 1
 
 # In[23]:
 
+n0=0
+n1=1
+lista_fibonacci = list()
+lista_fibonacci.append(n0)
+lista_fibonacci.append(n1)
 
+#print(lista_fibonacci.index(1))
+
+for i in range(2,30):
+    lista_fibonacci.append(lista_fibonacci[i-1]+lista_fibonacci[i-2])
+    i+=1
+print(lista_fibonacci)
 
 
 
@@ -72,7 +99,8 @@ n = 1
 
 # In[24]:
 
-
+suma = sum(lista_fibonacci)
+print(suma)
 
 
 # 9) La proporción aurea se expresa con una proporción matemática que nace el número irracional Phi= 1,618… que los griegos llamaron número áureo. El cuál se puede aproximar con la sucesión de Fibonacci. Con la lista del ejercicio anterior, imprimir el cociente de los últimos 5 pares de dos números contiguos:<br>
@@ -86,7 +114,12 @@ n = 1
 
 # In[38]:
 
+ultimos_15 = 15
+ultimos_5_del_15 = ultimos_15 - 5
 
+while ultimos_5_del_15<ultimos_15:
+    print(lista_fibonacci[ultimos_5_del_15]/lista_fibonacci[ultimos_5_del_15-1])
+    ultimos_5_del_15 +=1 
 
 
 # 10) A partir de la variable cadena ya dada, mostrar en qué posiciones aparece la letra "n"<br>
@@ -94,14 +127,22 @@ n = 1
 
 # In[39]:
 
-
+cadena = 'Hola Mundo. Esto es una practica del lenguaje de programación Python'
+print([pos for pos,letra in enumerate(cadena) if letra == 'n'])
 
 
 
 # 11) Crear un diccionario e imprimir sus claves utilizando un iterador
 
 # In[40]:
+dicc_pais_ciudad_continente = {
+    'Ciudad': ['Buenos Aires', 'Caracas', 'Bogotá', 'Lisboa', 'Roma'],
+    'País': ['Argentina', 'Venezuela', 'Colombia', 'Portugal', 'Italia'],
+    'Continente': ['América', 'América', 'América', 'Europa', 'Europa']
+}
 
+for i in dicc_pais_ciudad_continente:
+    print(i)
 
 
 
@@ -110,7 +151,10 @@ n = 1
 
 # In[41]:
 
-
+list_cadena = list(cadena)
+#print(list_cadena)
+for letra in list_cadena:
+    print(letra)
 
 
 
@@ -124,7 +168,10 @@ n = 1
 
 # In[48]:
 
-
+lista_pais = ['Paraguay','Argentina','Brasil','Uruguay','Bolivia']
+lista_ciudades = ['Asucion','Buenos Aires','Brasilia','Montevideo','La paz']
+tupla_pais_ciudades = zip(lista_pais,lista_ciudades)
+print(list(tupla_pais_ciudades))
 
 
 
@@ -133,7 +180,9 @@ n = 1
 
 # In[49]:
 
+lis = [18,21,29,32,35,42,56,60,63,71,84,90,91,100]
 
+print([num for num in lis if num%7==0])
 
 
 
@@ -142,7 +191,14 @@ n = 1
 
 # In[56]:
 
-
+lis = [[1,2,3,4],'rojo','verde',[True,False,False],['uno','dos','tres']]
+cantidad = 0
+for elemento in lis:
+    if type(elemento)== list:
+        cantidad+= len(elemento)
+    else:
+        cantidad+=1
+print('En total hay : '+str(cantidad)+' de elementos')
 
 
 # In[51]:
@@ -162,4 +218,12 @@ n = 1
 # In[58]:
 
 
-
+lis = [[1,2,3,4],'rojo','verde',[True,False,False],['uno','dos','tres']]
+lista_nueva = list()
+cantidad = 0
+for elemento in lis:
+    if type(elemento)!= list:
+         lista_nueva.append([elemento])
+    else:
+        lista_nueva.append(elemento)
+print(lista_nueva)
